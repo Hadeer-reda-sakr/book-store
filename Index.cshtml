@@ -1,8 +1,70 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model List<book>
+@{
+    ViewData["title"] = "index";
+} 
 
-<div class="text-center">
-    <h1 class="display-4 li-item">Welcome</h1>
-    <p class="li-td">To See More <a asp-controller="book" asp-action="index">Let Go</a>.</p>
+<div  >
+
+    <table class="col-sm-12">
+
+        <tr>
+            <th class="col-sm-2  li-item">
+
+
+                @Html.DisplayNameFor(model => Model.FirstOrDefault().Title)
+
+            </th>
+            <th class="col-sm-2 li-item">
+
+                @Html.DisplayNameFor(model => Model.FirstOrDefault().price)
+            </th>
+        </tr>
+
+
+
+
+
+        @foreach (var item in Model)
+        {
+
+            <tr>
+
+                <td class="col-sm-2 li-td">
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+
+                <td class="col-sm-2 li-td">
+                    @Html.DisplayFor(modelItem => item.price)
+                </td>
+            </tr>
+            <tr>
+                <th class="col-sm-2 li-item">
+                    @Html.DisplayNameFor(modelItem => item.author)
+                </th>
+
+                <td class="col-sm-4 li-td">
+                    @Html.DisplayFor(modelItem => item.author)
+
+                </td>
+            </tr>
+
+            <tr>
+                <th class="col-sm-2 li-item">
+                    @Html.DisplayNameFor(modelItem => item.description) <hr class="col-sm-2" />
+                </th>
+
+                <td class="col-sm-10 li-td">
+                    @Html.DisplayFor(modelItem => item.description) <hr class="col-sm-6"  />
+
+                </td>
+            </tr>
+        }
+    </table>
+
+</div>
+<hr />
+<div>
+    <a asp-action="detalis" >detalis</a> 
+  
+
 </div>
